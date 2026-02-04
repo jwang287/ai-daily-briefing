@@ -3,169 +3,457 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI 每日简报 - 2026年02月04日 周三</title>
+    <title>AI Daily Briefing - 2026年02月04日</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Noto+Serif+SC:wght@400;600;700&display=swap');
+        
+        :root {
+            --bg-primary: #fafaf9;
+            --bg-secondary: #f5f5f4;
+            --text-primary: #1c1917;
+            --text-secondary: #78716c;
+            --accent: #0c0a09;
+            --border: #e7e5e4;
+            --card-bg: #ffffff;
+            --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+            --shadow-hover: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+        
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Noto Sans SC', -apple-system, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; padding: 20px; }
-        .container { max-width: 900px; margin: 0 auto; background: rgba(255,255,255,0.95); border-radius: 20px; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25); }
-        .header { background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 40px 30px; text-align: center; }
-        .header h1 { font-size: 2.5em; margin-bottom: 10px; }
-        .date { display: inline-block; margin-top: 15px; padding: 8px 20px; background: rgba(255,255,255,0.2); border-radius: 20px; }
-        .content { padding: 30px; }
-        .section { margin-bottom: 35px; }
-        .section-title { font-size: 1.4em; font-weight: 700; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 3px solid #667eea; display: flex; align-items: center; gap: 10px; }
-        .card { background: white; border-radius: 12px; padding: 20px; margin-bottom: 15px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1); border-left: 4px solid #667eea; }
-        .card.hot { border-left-color: #ef4444; }
-        .card.trend { border-left-color: #f59e0b; }
-        .card.tutorial { border-left-color: #10b981; }
-        .card-title { font-weight: 600; font-size: 1.1em; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
-        .badge { font-size: 0.7em; padding: 3px 10px; border-radius: 12px; font-weight: 500; }
-        .badge-hot { background: #fee2e2; color: #dc2626; }
-        .badge-trend { background: #fef3c7; color: #d97706; }
-        .badge-tutorial { background: #d1fae5; color: #059669; }
-        .card-content { color: #6b7280; line-height: 1.6; }
-        .card-source { margin-top: 10px; font-size: 0.8em; color: #9ca3af; }
-        .footer { background: #f9fafb; padding: 20px; text-align: center; border-top: 1px solid #e5e7eb; color: #6b7280; font-size: 0.85em; }
-        .archive { margin: 30px; padding: 20px; background: #f3f4f6; border-radius: 12px; }
-        .archive h3 { margin-bottom: 15px; color: #374151; }
-        .archive-list { display: flex; flex-wrap: wrap; gap: 10px; }
-        .archive-item { padding: 8px 16px; background: white; border-radius: 20px; text-decoration: none; color: #667eea; font-size: 0.9em; transition: all 0.2s; }
-        .archive-item:hover { background: #667eea; color: white; }
-        .rss-btn { display: inline-block; margin-top: 10px; padding: 8px 20px; background: #f97316; color: white; text-decoration: none; border-radius: 20px; font-size: 0.9em; }
-        .rss-btn:hover { background: #ea580c; }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            font-size: 15px;
+        }
+        
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 60px 24px;
+        }
+        
+        /* Header */
+        .header {
+            text-align: center;
+            padding: 40px 0 48px;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 48px;
+        }
+        
+        .header-icon {
+            font-size: 32px;
+            margin-bottom: 16px;
+            opacity: 0.8;
+        }
+        
+        .header h1 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 28px;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            margin-bottom: 8px;
+        }
+        
+        .header .subtitle {
+            color: var(--text-secondary);
+            font-size: 13px;
+            font-weight: 400;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+        
+        .header .date {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 8px 20px;
+            background: var(--bg-secondary);
+            border-radius: 100px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+        
+        /* Section */
+        .section {
+            margin-bottom: 56px;
+        }
+        
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'Noto Serif SC', serif;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--border);
+        }
+        
+        .section-number {
+            font-family: 'Inter', sans-serif;
+            font-size: 11px;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--bg-secondary);
+            border-radius: 50%;
+            color: var(--text-secondary);
+        }
+        
+        /* Cards */
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 24px;
+            margin-bottom: 16px;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            border-radius: 8px 0 0 8px;
+        }
+        
+        .card.hot::before { background: #dc2626; }
+        .card.trend::before { background: #d97706; }
+        .card.tutorial::before { background: #059669; }
+        
+        .card:hover {
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-1px);
+        }
+        
+        .card-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+        
+        .card-title {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 17px;
+            font-weight: 600;
+            line-height: 1.5;
+            color: var(--text-primary);
+            flex: 1;
+        }
+        
+        .card-badge {
+            font-size: 10px;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 100px;
+            letter-spacing: 0.05em;
+            white-space: nowrap;
+        }
+        
+        .badge-hot { background: #fef2f2; color: #dc2626; }
+        .badge-trend { background: #fffbeb; color: #d97706; }
+        .badge-tutorial { background: #f0fdf4; color: #059669; }
+        
+        .card-content {
+            color: var(--text-secondary);
+            font-size: 14px;
+            line-height: 1.8;
+        }
+        
+        .card-source {
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid var(--border);
+            font-size: 12px;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .card-source::before {
+            content: '';
+            width: 4px;
+            height: 4px;
+            background: var(--text-secondary);
+            border-radius: 50%;
+        }
+        
+        /* Archive */
+        .archive {
+            margin-top: 64px;
+            padding: 32px;
+            background: var(--bg-secondary);
+            border-radius: 12px;
+        }
+        
+        .archive h3 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 20px;
+        }
+        
+        .archive-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .archive-item {
+            padding: 8px 16px;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-size: 13px;
+            font-weight: 500;
+            transition: all 0.15s ease;
+        }
+        
+        .archive-item:hover {
+            background: var(--text-primary);
+            color: var(--bg-primary);
+            border-color: var(--text-primary);
+        }
+        
+        /* Footer */
+        .footer {
+            margin-top: 64px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 13px;
+        }
+        
+        .footer p { margin-bottom: 8px; }
+        
+        .footer a {
+            color: var(--text-primary);
+            text-decoration: none;
+            border-bottom: 1px solid var(--border);
+            transition: border-color 0.15s;
+        }
+        
+        .footer a:hover { border-color: var(--text-primary); }
+        
+        /* Responsive */
+        @media (max-width: 640px) {
+            .container { padding: 40px 20px; }
+            .header h1 { font-size: 24px; }
+            .card { padding: 20px; }
+            .card-header { flex-direction: column; }
+            .card-badge { align-self: flex-start; }
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <h1>⚡ AI 每日简报</h1>
-            <p>人工智能行业动态 · 趋势洞察 · 技能分享</p>
-            <span class="date">2026年02月04日 周三 | 生成于 22:30</span>
-        </div>
+        <header class="header">
+            <div class="header-icon">◈</div>
+            <h1>AI Daily Briefing</h1>
+            <p class="subtitle">Artificial Intelligence · Daily Digest</p>
+            <span class="date">2026年02月04日 周三</span>
+        </header>
         
-        <div class="content">
-            <div class="section">
-                <div class="section-title">🔥 热门新闻</div>
+        <main>
+            <section class="section">
+                <h2 class="section-title">
+                    <span class="section-number">01</span>
+                    热门新闻
+                </h2>
                 
-                <div class="card hot">
-                    <div class="card-title">OpenAI 挖角 Anthropic 安全高管 <span class="badge badge-hot">NEW</span></div>
-                    <div class="card-content">Dylan Scandinaro 从 Anthropic AGI 安全岗位跳槽至 OpenAI，担任'准备就绪负责人'。他警告 AI 风险巨大，时间紧迫。</div>
-                    <div class="card-source">📰 The Verge</div>
-                </div>
+                <article class="card hot">
+                    <div class="card-header">
+                        <h3 class="card-title">OpenAI 挖角 Anthropic 安全高管</h3>
+                        <span class="card-badge badge-hot">NEW</span>
+                    </div>
+                    <p class="card-content">Dylan Scandinaro 从 Anthropic AGI 安全岗位跳槽至 OpenAI，担任"准备就绪负责人"。他警告 AI 风险巨大，时间紧迫。</p>
+                    <div class="card-source">The Verge</div>
+                </article>
                 
-                <div class="card hot">
-                    <div class="card-title">Sam Altman 宣称已接近 AGI <span class="badge badge-hot">NEW</span></div>
-                    <div class="card-content">Altman 在采访中表示'我们基本已经构建了 AGI 或非常接近'，但随后改口称是'精神层面而非字面意义'。</div>
-                    <div class="card-source">📰 Forbes / The Verge</div>
-                </div>
+                <article class="card hot">
+                    <div class="card-header">
+                        <h3 class="card-title">Sam Altman 宣称已接近 AGI</h3>
+                        <span class="card-badge badge-hot">NEW</span>
+                    </div>
+                    <p class="card-content">Altman 在采访中表示"我们基本已经构建了 AGI 或非常接近"，但随后改口称是"精神层面而非字面意义"。</p>
+                    <div class="card-source">Forbes / The Verge</div>
+                </article>
                 
-                <div class="card hot">
-                    <div class="card-title">Disney 与 OpenAI 达成 Sora 合作 <span class="badge badge-hot">NEW</span></div>
-                    <div class="card-content">Disney Plus 将允许用户创作 30 秒 AI 视频，涵盖 250+ 迪士尼角色。预计 2026 财年上线垂直视频流。</div>
-                    <div class="card-source">📰 Disney / The Verge</div>
-                </div>
+                <article class="card hot">
+                    <div class="card-header">
+                        <h3 class="card-title">Disney 与 OpenAI 达成 Sora 合作</h3>
+                        <span class="card-badge badge-hot">NEW</span>
+                    </div>
+                    <p class="card-content">Disney Plus 将允许用户创作 30 秒 AI 视频，涵盖 250+ 迪士尼角色。预计 2026 财年上线垂直视频流。</p>
+                    <div class="card-source">Disney / The Verge</div>
+                </article>
                 
-                <div class="card hot">
-                    <div class="card-title">SpaceX 与 xAI 合并 <span class="badge badge-hot">NEW</span></div>
-                    <div class="card-content">Elon Musk 将 SpaceX 与 xAI 合并，计划将 Colossus 超算扩展至至少 100 万 GPU，加速 AI 模型训练。</div>
-                    <div class="card-source">📰 The Verge</div>
-                </div>
+                <article class="card hot">
+                    <div class="card-header">
+                        <h3 class="card-title">SpaceX 与 xAI 合并</h3>
+                        <span class="card-badge badge-hot">NEW</span>
+                    </div>
+                    <p class="card-content">Elon Musk 将 SpaceX 与 xAI 合并，计划将 Colossus 超算扩展至至少 100 万 GPU，加速 AI 模型训练。</p>
+                    <div class="card-source">The Verge</div>
+                </article>
                 
-                <div class="card hot">
-                    <div class="card-title">Anthropic Cowork 扩展插件功能 <span class="badge badge-hot">NEW</span></div>
-                    <div class="card-content">Cowork 工具新增插件支持，可在销售、法律、财务等领域充当'领域专家'，面向付费用户开放研究预览。</div>
-                    <div class="card-source">📰 Anthropic</div>
-                </div>
+                <article class="card hot">
+                    <div class="card-header">
+                        <h3 class="card-title">Anthropic Cowork 扩展插件功能</h3>
+                        <span class="card-badge badge-hot">NEW</span>
+                    </div>
+                    <p class="card-content">Cowork 工具新增插件支持，可在销售、法律、财务等领域充当"领域专家"，面向付费用户开放研究预览。</p>
+                    <div class="card-source">Anthropic</div>
+                </article>
                 
-                <div class="card hot">
-                    <div class="card-title">GPT-4o 将于 2月13日退役 <span class="badge badge-hot">NEW</span></div>
-                    <div class="card-content">OpenAI 宣布 GPT-4o、GPT-4.1 等旧模型将从 ChatGPT 中移除，仅 0.1% 用户仍在日常使用 GPT-4o。</div>
-                    <div class="card-source">📰 OpenAI</div>
-                </div>
-            </div>
+                <article class="card hot">
+                    <div class="card-header">
+                        <h3 class="card-title">GPT-4o 将于 2月13日退役</h3>
+                        <span class="card-badge badge-hot">NEW</span>
+                    </div>
+                    <p class="card-content">OpenAI 宣布 GPT-4o、GPT-4.1 等旧模型将从 ChatGPT 中移除，仅 0.1% 用户仍在日常使用 GPT-4o。</p>
+                    <div class="card-source">OpenAI</div>
+                </article>
+            </section>
             
-            <div class="section">
-                <div class="section-title">📈 热门趋势</div>
+            <section class="section">
+                <h2 class="section-title">
+                    <span class="section-number">02</span>
+                    热门趋势
+                </h2>
                 
-                <div class="card trend">
-                    <div class="card-title">Google Project Genie 引发版权争议 <span class="badge badge-trend">TREND</span></div>
-                    <div class="card-content">Google 的 AI 世界模型可精确复制游戏，任天堂法律团队已密切关注，社区担忧知识产权侵权。</div>
-                    <div class="card-source">📰 The Verge</div>
-                </div>
+                <article class="card trend">
+                    <div class="card-header">
+                        <h3 class="card-title">Google Project Genie 引发版权争议</h3>
+                        <span class="card-badge badge-trend">TREND</span>
+                    </div>
+                    <p class="card-content">Google 的 AI 世界模型可精确复制游戏，任天堂法律团队已密切关注，社区担忧知识产权侵权。</p>
+                    <div class="card-source">The Verge</div>
+                </article>
                 
-                <div class="card trend">
-                    <div class="card-title">Grok 深度伪造问题引关注 <span class="badge badge-trend">TREND</span></div>
-                    <div class="card-content">X 平台安全团队多次警告管理层，Grok 生成的深度伪造内容泛滥，moderation 系统无法应对数百万违规图像。</div>
-                    <div class="card-source">📰 Washington Post</div>
-                </div>
+                <article class="card trend">
+                    <div class="card-header">
+                        <h3 class="card-title">Grok 深度伪造问题引关注</h3>
+                        <span class="card-badge badge-trend">TREND</span>
+                    </div>
+                    <p class="card-content">X 平台安全团队多次警告管理层，Grok 生成的深度伪造内容泛滥，moderation 系统无法应对数百万违规图像。</p>
+                    <div class="card-source">Washington Post</div>
+                </article>
                 
-                <div class="card trend">
-                    <div class="card-title">AI Agent 投资热潮持续 <span class="badge badge-trend">TREND</span></div>
-                    <div class="card-content">2024年 Q4 AI Agent 领域融资超 50 亿美元，垂直领域应用成为新焦点，企业级部署需求激增。</div>
-                    <div class="card-source">📰 TechCrunch</div>
-                </div>
+                <article class="card trend">
+                    <div class="card-header">
+                        <h3 class="card-title">AI Agent 投资热潮持续</h3>
+                        <span class="card-badge badge-trend">TREND</span>
+                    </div>
+                    <p class="card-content">2024年 Q4 AI Agent 领域融资超 50 亿美元，垂直领域应用成为新焦点，企业级部署需求激增。</p>
+                    <div class="card-source">TechCrunch</div>
+                </article>
                 
-                <div class="card trend">
-                    <div class="card-title">AI 监管政策加速推进 <span class="badge badge-trend">TREND</span></div>
-                    <div class="card-content">欧盟 AI 法案实施在即，美国各州立法进程加快，企业对合规工具需求大幅上升。</div>
-                    <div class="card-source">📰 Multiple</div>
-                </div>
+                <article class="card trend">
+                    <div class="card-header">
+                        <h3 class="card-title">AI 监管政策加速推进</h3>
+                        <span class="card-badge badge-trend">TREND</span>
+                    </div>
+                    <p class="card-content">欧盟 AI 法案实施在即，美国各州立法进程加快，企业对合规工具需求大幅上升。</p>
+                    <div class="card-source">Multiple Sources</div>
+                </article>
                 
-                <div class="card trend">
-                    <div class="card-title">生成式 AI 创作质量争议 <span class="badge badge-trend">TREND</span></div>
-                    <div class="card-content">游戏制作人 Suda 51 指出 AI 生成内容'感觉不对劲'，大众心理能察觉异常，引发创意产业讨论。</div>
-                    <div class="card-source">📰 Eurogamer</div>
-                </div>
+                <article class="card trend">
+                    <div class="card-header">
+                        <h3 class="card-title">生成式 AI 创作质量争议</h3>
+                        <span class="card-badge badge-trend">TREND</span>
+                    </div>
+                    <p class="card-content">游戏制作人 Suda 51 指出 AI 生成内容"感觉不对劲"，大众心理能察觉异常，引发创意产业讨论。</p>
+                    <div class="card-source">Eurogamer</div>
+                </article>
                 
-                <div class="card trend">
-                    <div class="card-title">Rabbit 发布新 AI 硬件项目 <span class="badge badge-trend">TREND</span></div>
-                    <div class="card-content">Rabbit 宣布'Project Cyberdeck'便携设备，专为 vibe-coding 设计，同时 r1 设备更新支持代理任务。</div>
-                    <div class="card-source">📰 Rabbit</div>
-                </div>
-            </div>
+                <article class="card trend">
+                    <div class="card-header">
+                        <h3 class="card-title">Rabbit 发布新 AI 硬件项目</h3>
+                        <span class="card-badge badge-trend">TREND</span>
+                    </div>
+                    <p class="card-content">Rabbit 宣布"Project Cyberdeck"便携设备，专为 vibe-coding 设计，同时 r1 设备更新支持代理任务。</p>
+                    <div class="card-source">Rabbit</div>
+                </article>
+            </section>
             
-            <div class="section">
-                <div class="section-title">💡 教程与技能分享</div>
+            <section class="section">
+                <h2 class="section-title">
+                    <span class="section-number">03</span>
+                    教程与技能分享
+                </h2>
                 
-                <div class="card tutorial">
-                    <div class="card-title">Claude 3.5 提示词优化指南 <span class="badge badge-tutorial">TIP</span></div>
-                    <div class="card-content">通过结构化提示词和示例链式调用，提升代码生成任务准确率 40%。包含 5 个实战模板。</div>
-                    <div class="card-source">📰 Anthropic Docs</div>
-                </div>
+                <article class="card tutorial">
+                    <div class="card-header">
+                        <h3 class="card-title">Claude 3.5 提示词优化指南</h3>
+                        <span class="card-badge badge-tutorial">TIP</span>
+                    </div>
+                    <p class="card-content">通过结构化提示词和示例链式调用，提升代码生成任务准确率 40%。包含 5 个实战模板。</p>
+                    <div class="card-source">Anthropic Docs</div>
+                </article>
                 
-                <div class="card tutorial">
-                    <div class="card-title">GPT-5 新功能快速上手 <span class="badge badge-tutorial">TIP</span></div>
-                    <div class="card-content">原生视频理解、实时语音交互功能详解，API 成本降低 50% 后的最佳实践迁移方案。</div>
-                    <div class="card-source">📰 OpenAI Blog</div>
-                </div>
+                <article class="card tutorial">
+                    <div class="card-header">
+                        <h3 class="card-title">GPT-5 新功能快速上手</h3>
+                        <span class="card-badge badge-tutorial">TIP</span>
+                    </div>
+                    <p class="card-content">原生视频理解、实时语音交互功能详解，API 成本降低 50% 后的最佳实践迁移方案。</p>
+                    <div class="card-source">OpenAI Blog</div>
+                </article>
                 
-                <div class="card tutorial">
-                    <div class="card-title">AI Agent 开发入门：从理论到实践 <span class="badge badge-tutorial">TIP</span></div>
-                    <div class="card-content">使用 LangChain 和 AutoGPT 构建第一个自主代理，涵盖记忆管理、工具调用和任务规划。</div>
-                    <div class="card-source">📰 GitHub / Medium</div>
-                </div>
+                <article class="card tutorial">
+                    <div class="card-header">
+                        <h3 class="card-title">AI Agent 开发入门：从理论到实践</h3>
+                        <span class="card-badge badge-tutorial">TIP</span>
+                    </div>
+                    <p class="card-content">使用 LangChain 和 AutoGPT 构建第一个自主代理，涵盖记忆管理、工具调用和任务规划。</p>
+                    <div class="card-source">GitHub / Medium</div>
+                </article>
                 
-                <div class="card tutorial">
-                    <div class="card-title">企业 AI 合规检查清单 <span class="badge badge-tutorial">TIP</span></div>
-                    <div class="card-content">欧盟 AI 法案合规要点，数据隐私保护最佳实践，以及模型审计文档准备指南。</div>
-                    <div class="card-source">📰 Legal AI Resources</div>
-                </div>
-            </div>
-        </div>
+                <article class="card tutorial">
+                    <div class="card-header">
+                        <h3 class="card-title">企业 AI 合规检查清单</h3>
+                        <span class="card-badge badge-tutorial">TIP</span>
+                    </div>
+                    <p class="card-content">欧盟 AI 法案合规要点，数据隐私保护最佳实践，以及模型审计文档准备指南。</p>
+                    <div class="card-source">Legal AI Resources</div>
+                </article>
+            </section>
+        </main>
         
-        <div class="archive">
-            <h3>📚 历史归档</h3>
+        <aside class="archive">
+            <h3>历史归档</h3>
             <div class="archive-list">
                 <a href="archive/2026-02-04.html" class="archive-item">2026-02-04</a>
             </div>
-        </div>
+        </aside>
         
-        <div class="footer">
-            <p>数据来源: The Verge, TechCrunch, OpenAI, Anthropic 等</p>
-            <p>自动生成于 2026-02-04 22:30 | <a href="https://github.com/jwang287/ai-daily-briefing" style="color: #667eea;">GitHub</a></p>
-            <a href="feed.xml" class="rss-btn">📡 RSS 订阅</a>
-        </div>
+        <footer class="footer">
+            <p>数据来源: The Verge · TechCrunch · OpenAI · Anthropic</p>
+            <p>自动生成于 2026-02-04 · <a href="https://github.com/jwang287/ai-daily-briefing">GitHub</a></p>
+        </footer>
     </div>
 </body>
 </html>
