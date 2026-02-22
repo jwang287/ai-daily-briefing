@@ -1,0 +1,90 @@
+{
+  "date": "2026-02-22",
+  "weekday": "周日",
+  "hot_news": [
+    {
+      "title": "OpenAI 挖角 Anthropic 安全高管",
+      "content": "Dylan Scandinaro 从 Anthropic AGI 安全岗位跳槽至 OpenAI，担任'准备就绪负责人'。他警告 AI 风险巨大，时间紧迫。",
+      "source": "The Verge"
+    },
+    {
+      "title": "Sam Altman 宣称已接近 AGI",
+      "content": "Altman 在采访中表示'我们基本已经构建了 AGI 或非常接近'，但随后改口称是'精神层面而非字面意义'。",
+      "source": "Forbes / The Verge"
+    },
+    {
+      "title": "AI 新闻 3",
+      "content": "内容获取中，请稍后查看更新...",
+      "source": "AI Daily"
+    },
+    {
+      "title": "AI 新闻 4",
+      "content": "内容获取中，请稍后查看更新...",
+      "source": "AI Daily"
+    },
+    {
+      "title": "AI 新闻 5",
+      "content": "内容获取中，请稍后查看更新...",
+      "source": "AI Daily"
+    },
+    {
+      "title": "AI 新闻 6",
+      "content": "内容获取中，请稍后查看更新...",
+      "source": "AI Daily"
+    }
+  ],
+  "trending": [
+    {
+      "title": "Google Project Genie 引发版权争议",
+      "content": "Google 的 AI 世界模型可精确复制游戏，任天堂法律团队已密切关注。",
+      "source": "The Verge"
+    },
+    {
+      "title": "AI Agent 投资热潮持续",
+      "content": "2024年 Q4 AI Agent 领域融资超 50 亿美元，垂直领域应用成为新焦点。",
+      "source": "TechCrunch"
+    },
+    {
+      "title": "Grok 深度伪造问题引关注",
+      "content": "X 平台安全团队多次警告管理层，Grok 生成的深度伪造内容泛滥。",
+      "source": "Washington Post"
+    },
+    {
+      "title": "AI 监管政策加速推进",
+      "content": "欧盟 AI 法案实施在即，美国各州立法进程加快。",
+      "source": "Multiple"
+    },
+    {
+      "title": "Rabbit 发布新 AI 硬件项目",
+      "content": "Rabbit 宣布'Project Cyberdeck'便携设备，专为 vibe-coding 设计。",
+      "source": "Rabbit"
+    },
+    {
+      "title": "生成式 AI 创作质量争议",
+      "content": "游戏制作人 Suda 51 指出 AI 生成内容'感觉不对劲'，引发创意产业讨论。",
+      "source": "Eurogamer"
+    }
+  ],
+  "tutorials": [
+    {
+      "title": "Claude 3.5 提示词优化指南",
+      "content": "通过结构化提示词和示例链式调用，提升代码生成任务准确率 40%。包含 5 个实战模板。",
+      "source": "Anthropic Docs"
+    },
+    {
+      "title": "GPT-5 新功能快速上手",
+      "content": "原生视频理解、实时语音交互功能详解，API 成本降低 50% 后的最佳实践迁移方案。",
+      "source": "OpenAI Blog"
+    },
+    {
+      "title": "AI Agent 开发入门：从理论到实践",
+      "content": "使用 LangChain 和 AutoGPT 构建第一个自主代理，涵盖记忆管理、工具调用和任务规划。",
+      "source": "GitHub / Medium"
+    },
+    {
+      "title": "企业 AI 合规检查清单",
+      "content": "欧盟 AI 法案合规要点，数据隐私保护最佳实践，以及模型审计文档准备指南。",
+      "source": "Legal AI Resources"
+    }
+  ]
+}
